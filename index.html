@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{SITE_NAME}}</title>
+    <meta name="theme-color" content="{{THEME_PRIMARY}}">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: {{THEME_PRIMARY}};
+            --primary-light: {{THEME_PRIMARY_LIGHT}};
+            --primary-dark: {{THEME_PRIMARY_DARK}};
+            --bg: {{THEME_BG}};
+            --bg-card: {{THEME_BG_CARD}};
+            --border: {{THEME_BORDER}};
+            --text-primary: {{THEME_TEXT_PRIMARY}};
+            --text-secondary: {{THEME_TEXT_SECONDARY}};
+            --text-muted: {{THEME_TEXT_MUTED}};
+            --nav-height: 56px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        /* ===== Navigation ===== */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            display: flex; align-items: center;
+            padding: 0 24px; height: var(--nav-height);
+        }
+        .nav-logo {
+            font-size: 18px; font-weight: 700; color: var(--primary);
+            display: flex; align-items: center; gap: 8px;
+            text-decoration: none;
+        }
+        .nav-tabs {
+            display: flex; gap: 4px; margin-left: 32px;
+        }
+        .nav-tab {
+            padding: 6px 16px; border-radius: 8px; border: none;
+            background: transparent; color: var(--text-secondary);
+            cursor: pointer; font-size: 14px; font-weight: 500;
+            transition: all 0.2s; text-decoration: none;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .nav-tab:hover { color: var(--text-primary); background: rgba(0,0,0,0.04); }
+        .nav-tab.active {
+            background: var(--primary); color: white; font-weight: 600;
+        }
+
+        /* ===== Content ===== */
+        #content {
+            padding-top: var(--nav-height);
+            min-height: 100vh;
+        }
+
+        /* ===== Hero ===== */
+        .hero {
+            text-align: center; padding: 60px 24px 40px;
+            background: linear-gradient(180deg, color-mix(in srgb, var(--primary) 8%, transparent) 0%, transparent 100%);
+        }
+        .hero h1 {
+            font-size: 42px; font-weight: 800;
+            color: var(--primary-dark);
+        }
+        .hero p {
+            margin-top: 12px; color: var(--text-secondary); font-size: 16px;
+        }
+
+        /* ===== Container ===== */
+        .container {
+            max-width: 800px; margin: 0 auto; padding: 0 24px 60px;
+        }
+
+        /* ===== Card ===== */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px; padding: 20px;
+            transition: all 0.2s;
+        }
+        .card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+            transform: translateY(-1px);
+        }
+
+        /* ===== Animations ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== Mobile ===== */
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 28px; }
+            .nav-logo { font-size: 16px; }
+            .nav-tab { padding: 6px 12px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <a class="nav-logo" href="#home">{{SITE_NAME}}</a>
+        <div class="nav-tabs" id="nav-tabs">
+            <!-- 由 JS 根据 CONFIG.pages 自动生成 -->
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div id="content"></div>
+
+    <!-- JS 加载顺序：config → utils → app → pages -->
+    <script src="config.js"></script>
+    <script src="utils.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // 自动生成导航标签
+        (function() {
+            const tabsEl = document.getElementById('nav-tabs');
+            CONFIG.pages.forEach(p => {
+                const a = document.createElement('a');
+                a.className = 'nav-tab';
+                a.dataset.page = p.key;
+                a.href = p.hash;
+                a.textContent = (p.icon ? p.icon + ' ' : '') + p.label;
+                if (p.key === 'home') a.classList.add('active');
+                tabsEl.appendChild(a);
+            });
+        })();
+    </script>
+    <script src="pages/home.js"></script>
+</body>
+</html>
