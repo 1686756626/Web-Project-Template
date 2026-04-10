@@ -1,0 +1,78 @@
+{
+  "_说明": "本文件是所有项目的联动索引。智能体读到任何项目时，先查这里了解全局。",
+  "_更新规则": "贡献新经验或组件时，同步更新本文件和对应项目的 knowledge-map.json",
+
+  "projects": {
+    "Teaching-Dashboard": {
+      "repo": "https://github.com/1686756626/Teaching-Dashboard",
+      "branch": "main",
+      "visibility": "private",
+      "type": "前端SPA",
+      "description": "教学备课系统前端可视化",
+      "contributes": {
+        "经验/前端/Tailwind-深色模式覆盖方案.md": { "since": "2026-04-04", "status": "verified" },
+        "经验/前端/打印样式优化.md": { "since": "2026-04-04", "status": "verified" },
+        "经验/前端/移动端适配.md": { "since": "2026-04-04", "status": "verified" },
+        "经验/部署/Nginx-GitHub-API反代.md": { "since": "2026-04-04", "status": "verified" },
+        "经验/部署/浏览器缓存破坏方案.md": { "since": "2026-04-04", "status": "verified" },
+        "经验/GitHub/API-中文文件推送会变空.md": { "since": "2026-04-04", "status": "red-line" },
+        "经验/GitHub/API-中文路径raw返回HTML.md": { "since": "2026-04-04", "status": "verified" },
+        "经验/架构/纯前端SPA-目录结构.md": { "since": "2026-04-04", "status": "verified" },
+        "经验/数据/students.json课表格式.md": { "since": "2026-04-10", "status": "verified" },
+        "components/github-api.js": { "since": "2026-04-10", "status": "verified" },
+        "components/markdown-preview.js": { "since": "2026-04-10", "status": "verified" },
+        "components/download-batch.js": { "since": "2026-04-10", "status": "verified" }
+      },
+      "uses": [
+        "components/store.js"
+      ]
+    },
+
+    "Finance-Manager": {
+      "repo": "https://github.com/1686756626/Finance-Manager",
+      "branch": "main",
+      "visibility": "private",
+      "type": "前端SPA",
+      "description": "个人财务管理系统（五池分流+属性评分）",
+      "contributes": {
+        "经验/架构/localStorage数据存储.md": { "since": "2026-04-10", "status": "verified" },
+        "经验/架构/聊天面板组件.md": { "since": "2026-04-10", "status": "verified" },
+        "components/store.js": { "since": "2026-04-10", "status": "verified" },
+        "components/auth.js": { "since": "2026-04-10", "status": "verified" }
+      },
+      "uses": []
+    },
+
+    "Andy-Shihundan": {
+      "repo": "https://github.com/1686756626/Andy-Shihundan",
+      "branch": "main",
+      "visibility": "public",
+      "type": "前端SPA",
+      "description": "搞笑网站（丑事墙+AI聊天）",
+      "contributes": {
+        "经验/架构/纯前端SPA-目录结构.md": { "since": "2026-04-04", "status": "co-contributor" }
+      },
+      "uses": [
+        "components/store.js",
+        "经验/架构/聊天面板组件.md"
+      ]
+    },
+
+    "CXL": {
+      "repo": "https://github.com/1686756626/CXL",
+      "branch": "main",
+      "visibility": "private",
+      "type": "纯文档教学系统",
+      "description": "高考冲刺教学系统（6科110+文件）",
+      "contributes": {
+        "经验/教学/先练后讲原则.md": { "since": "2026-04-10", "status": "verified" },
+        "经验/教学/教学时间管理.md": { "since": "2026-04-10", "status": "verified" },
+        "经验/教学/出题流程.md": { "since": "2026-04-10", "status": "verified" },
+        "经验/教学/课后同步规范.md": { "since": "2026-04-10", "status": "verified" },
+        "经验/教学/多科目教学系统结构.md": { "since": "2026-04-10", "status": "verified" },
+        "经验/部署/cron定时任务模板.md": { "since": "2026-04-10", "status": "verified" }
+      },
+      "uses": []
+    }
+  }
+}
