@@ -28,11 +28,12 @@ const CONFIG = {
         { key: 'home', label: '首页', icon: '🏠', hash: '#home' }
     ],
 
-    // AI 聊天（可选，删除此块则不启用）
+    // AI 聊天（可选，设 enabled: false 则不启用）
     chat: {
         enabled: false,
-        agentId: '',
-        apiBase: '/copaw-api',
+        agentId: '',          // CoPaw Agent ID
+        apiBase: '/copaw-api',     // CoPaw API 代理路径
+        chatApiBase: '/chat-api',  // 聊天消息持久化服务路径
         userId: 'visitor',
         placeholder: '输入消息...'
     }

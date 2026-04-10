@@ -1,0 +1,14 @@
+[Unit]
+Description=Chat Server (SQLite)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/www/PLACEHOLDER/chat-server
+ExecStart=/usr/bin/node server.js
+Restart=on-failure
+RestartSec=3
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target
