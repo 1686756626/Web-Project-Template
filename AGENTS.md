@@ -30,55 +30,12 @@
 
 ---
 
-## 联动机制
+## 防乱原则
 
-### 知识库侧
+**一个项目只有一个 AGENTS.md。不加第二个规则文件。**
 
-- `knowledge-map.json` — 全局索引，记录每个项目贡献了什么、使用了什么
-- `贡献规范.md` — 定义什么该贡献、什么不该、格式要求、目录规则
+往这里加东西之前，过三关：
 
-### 项目侧
-
-每个项目根目录有 `knowledge-map.json`，结构：
-
-```json
-{
-  "_知识库": "https://github.com/1686756626/Web-Project-Template",
-  "_贡献规范": "Web-Project-Template/贡献规范.md",
-  "contributes": [
-    { "knowledge": "经验/前端/xxx.md", "source": "说明", "status": "verified", "since": "日期" }
-  ],
-  "uses": [
-    { "knowledge": "components/store.js", "purpose": "用途说明" }
-  ],
-  "pending": [
-    { "idea": "待提取的经验想法", "reason": "暂不提取的原因" }
-  ]
-}
-```
-
-### 智能体行为规则
-
-1. **接手任何项目时**：读 `knowledge-map.json` → 知道本项目和知识库的关联
-2. **发现新的通用经验时**：
-   - 读 `贡献规范.md` 判断是否该贡献
-   - 按规范编写经验文档或组件
-   - 更新本项目的 `knowledge-map.json`（contributes 数组）
-   - 更新知识库的 `knowledge-map.json`（索引）
-   - 两个仓库分别 commit + push
-3. **做新项目时**：
-   - 先来知识库查有没有现成的经验和组件
-   - 在新项目的 `knowledge-map.json` 的 `uses` 数组中记录用了什么
-
-### status 字段说明
-
-| 值 | 含义 |
-|----|------|
-| `verified` | 已在 ≥1 个项目中实际验证通过 |
-| `co-contributor` | 多项目共同贡献，非单一来源 |
-| `red-line` | 红线规则，违反会导致严重故障 |
-| `draft` | 草稿，尚未验证 |
-
-### pending 字段
-
-记录"觉得有用但还没提取"的想法。等第二个项目也需要时再提取，不提前抽象。
+1. **只有一个项目用得到？→ 留在那个项目里，不加进来**
+2. **不确定以后用不用得到？→ 不加，等第二次遇到再说**
+3. **加进来会让人读更久才能干活？→ 换个更短的写法，或者不写**
